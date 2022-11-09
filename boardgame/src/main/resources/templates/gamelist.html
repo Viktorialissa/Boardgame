@@ -40,7 +40,7 @@
     		<td th:text="${game.description}"></td>
     		<td th:text="${game.gamerAmount}"></td>
     		<td th:text="${game.category.name}"></td>
-    		<td><a class="btn btn-success" th:href="@{/updatelik/{id}(id=${game.id})}">tks</a></td>
+    		<td><a class="btn btn-success" th:href="@{/editgamelik/{id}(id=${game.id})}">tks</a></td>
     		
     		<td th:text="${game.lik + 1}"></td>
     		<td><input type="button" value="lik" class="btn btn-success" name="btn_lik" th:href="@{/updatelik/{id}(id=${game.id})}"/></td>

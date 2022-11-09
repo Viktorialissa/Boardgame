@@ -12,6 +12,7 @@ public interface GameRepository extends CrudRepository<Game, Long> {
 	
 	@RestResource
 	List<Game> findByName(@Param("name") String name);
+	List<Make> findByMakeId(Long makeId);
 	
 	//@Query(update game set lik = lik +1 where id = gameId)
 	//void addLikByOne(Long gameId);

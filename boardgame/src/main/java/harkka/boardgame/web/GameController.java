@@ -114,7 +114,7 @@ public class GameController {
    	public String editlikGame(@PathVariable("id") Long gameId, Model model) {
     		Game game = repository.findById(gameId)
     		.orElseThrow(() -> new IllegalArgumentException("Invalid id" + gameId));
-    		model.addAttribute("game",game);
+    		model.addAttribute("game", game);
     		model.addAttribute("category", crepository.findAll());
     		model.addAttribute("make", mrepository.findAll());
    		return "editgamelik";   
@@ -124,7 +124,12 @@ public class GameController {
 
     
     @RequestMapping(value = "/updatelik/{id}", method = RequestMethod.POST)
-    public String update(@PathVariable("id") Long gameId, Model model, Game game){
+    public String update(@PathVariable("id") Long gameId, Model model, Game game, BindingResult result){
+    	if (result.hasErrors()) {
+            model.addAttribute("make", mrepository.findAll());
+            model.addAttribute("category", crepository.findAll());
+            return "editgamelik";
+        }
         game.setId(gameId);
     	repository.save(game);
         return "redirect:/gamelist";

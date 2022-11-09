@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import harkka.boardgame.domain.GameRepository;
 import harkka.boardgame.domain.Make;
 import harkka.boardgame.domain.MakeRepository;
 
@@ -23,6 +24,9 @@ public class MakeController {
 	
 	@Autowired
 	private MakeRepository mrepository;
+	
+	@Autowired
+	private GameRepository repository;
 	
 	@RequestMapping(value="/makelist", method = RequestMethod.GET)
 	public String makeList(Model model) {
@@ -46,6 +50,15 @@ public class MakeController {
     	mrepository.save(make);
         return "redirect:/makelist";
     }    
+    
+    @RequestMapping(value = "/list/{id}")
+	public String editGame(@PathVariable("id") Long makeId, Model model) {
+		model.addAttribute("make", mrepository.findById(makeId));
+		model.addAttribute("game", repository.findAll());
+		return "gamelistbymaker";   
+    
+} 
+	
     
     @RequestMapping(value = "/deletemake/{id}")
     public String deleteMake(@PathVariable("id") Long id, Make make) {

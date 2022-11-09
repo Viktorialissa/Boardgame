@@ -21,7 +21,7 @@ public class Game {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long id;
+	private Long gameId;
 	
 	//attribuutit
 	@NotEmpty(message = "Name is mandatory")
@@ -83,12 +83,12 @@ public class Game {
 	}
 	
 	//getterit ja setterit
-	public void setId(Long id) {
-		this.id = id;
+	public void setId(Long gameId) {
+		this.gameId = gameId;
 	}
 	
 	public Long getId() {
-		return id;
+		return gameId;
 	}	
 
 	public String getBrand() {
@@ -175,9 +175,9 @@ public class Game {
 	@Override //dokumentoiva annotaatio (ei vaikuta järjestelmään mitenkään vrt springin annotaatiot joilla väliä)
 	public String toString() {
 		if (this.make != null)
-				return "Game [id=" + id + ", name= " + name + ", brand= " + brand + ", price= " + price + ", year= " + publishingYear  + ", description= " + description + ", player amount= " + gamerAmount + ", like=" + lik + ", kategoria= " + this.getCategory() + ", valmistaja=" + this.getMake() + " ]";
+				return "Game [id=" + gameId + ", name= " + name + ", brand= " + brand + ", price= " + price + ", year= " + publishingYear  + ", description= " + description + ", player amount= " + gamerAmount + ", like=" + lik + ", kategoria= " + this.getCategory() + ", valmistaja=" + this.getMake() + " ]";
 		else
-			return "Game [id=" + id + ", name= " + name + ", brand= " + brand + ", price= " + price + ", year= " + publishingYear  + " description= " + description + " player amount= " + gamerAmount + ", valmistaja" + " ]";
+			return "Game [id=" + gameId + ", name= " + name + ", brand= " + brand + ", price= " + price + ", year= " + publishingYear  + " description= " + description + " player amount= " + gamerAmount + ", valmistaja" + " ]";
 	}
 
 			

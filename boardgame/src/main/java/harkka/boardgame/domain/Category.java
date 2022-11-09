@@ -18,7 +18,7 @@ public class Category {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long id;
+	private Long categoryId;
 	
 	//attribuutit
 	@NotEmpty
@@ -42,12 +42,12 @@ public class Category {
 	
 	
 	//getterit ja setterit
-			public void setId(Long id) {
-				this.id = id;
+			public void setId(Long categoryId) {
+				this.categoryId = categoryId;
 			}
 			
 			public Long getId() {
-				return id;
+				return categoryId;
 			}
 
 			public String getName() {
@@ -69,7 +69,7 @@ public class Category {
 			
 			@Override
 			public String toString() {
-				return "[id= " + id + ", name=" + name + "]";
+				return "[id= " + categoryId + ", name=" + name + "]";
 			}
 
 		

@@ -27,12 +27,14 @@ class BoardgameApplicationTests {
 	@Autowired
 	private CategoryController categoryController;
 	
+		
 
 	@Test
 	void contextLoads() throws Exception {
 		assertThat(gameController).isNotNull();
 		assertThat(makeController).isNotNull();
 		assertThat(categoryController).isNotNull();
+		
 	}
 
 }

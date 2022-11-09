@@ -22,7 +22,7 @@
     		<td th:text="${make.id}"></td>
     		<td th:text="${make.name}"></td>
     		<td><a class="btn btn-success" th:href="@{/editmake/{id}(id=${make.id})}">✍</a></td>
-    		<td><a class="btn btn-success" th:href="@{/gamelistbymaker/{id} (id=${make.id})}">Merkin pelit</a></td>
+    		<td><a class="btn btn-success" th:href="@{/gamelistbymaker/{id}(id=${make.id})}">Merkin pelit</a></td>
     		<td sec:authorize="hasAuthority('ADMIN')"><a class="btn btn-danger" th:href="@{/deletemake/{id}(id=${make.id})}">☠️</a></td>
     	</tr>
      </table>
