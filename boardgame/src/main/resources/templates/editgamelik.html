@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>EditGame</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+     <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+</head>
+<body>
+	<h1>Tykkäys</h1>
+	<div>
+		<form th:object="${game}" th:action="@{/updatelik/{id}(id=${game.id})}" action="#" method="post">
+			<label for="id"></label>
+			<input type="hidden" id="id" th:field="*{id}" readonly="readonly" />
+			<div style="clear: both; display: block; height: 10px;"></div>					  	
+			<label for="lik">lik</label>
+			<input type="text" id="lik" th:field="*{lik}"/>
+			<div style="clear: both; display: block; height: 10px;"></div>
+			<label for="name">Nimi</label>
+			<input type="text" id="name" th:field="*{name}" th:required="required"/>
+			<div style="clear: both; display: block; height: 10px;"></div>
+		  	<label for="brand">Brändi</label>
+			<input type="text" id="brand" th:field="*{brand}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+		  	<label for="price">Hinta</label>
+			<input type="text" id="price" th:field="*{price}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			<label for="publishingYear">Julkaisuvuosi</label>
+			<input type="text" id="publishingYear" th:field="*{publishingYear}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			<label for="description">Kuvaus</label>
+			<input type="text" id="description" th:field="*{description}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			<label for="gamerAmount">Pelaajamäärä</label>
+			<input type="text" id="gamerAmount" th:field="*{gamerAmount}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			<label for="lik">lik</label>
+			<input type="number" id="lik" th:field="*{lik}"/>
+			<div style="clear: both; display: block; height: 10px;"></div>
+			<label for="categorylist">Kategoria</label>
+				<select id="categorylist" th:field="*{category}">
+					<option th:each="category: ${category}" th:value="${category.id}" th:text="${category.name}"></option>
+				</select>
+			<div style="clear: both; display: block; height: 10px;"></div>
+			<label for="makelist">Valmistaja</label>
+				<select id="makelist" th:field="*{make}">
+					<option th:each="make: ${make}" th:value="${make.id}" th:text="${make.name}"></option>
+				</select>
+			<div style="clear: both; display: block; height: 10px;"></div>
+			<br>
+			<input type="submit" class="btn btn-sm btn-success"value="Tallenna ✓"></input>
+			<a class="btn btn-sm btn-light" href="/gamelist">Takaisin ⮌</a>
+		</form>
+	</div>
+</body>
+</html>

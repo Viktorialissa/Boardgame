@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add user</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link type="text/css" rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+</head>
+<body>
+
+<div class="container; col-md-4" style="text-align: center; margin-top: 10px; margin-left: 400px">
+	<h2>Sign-up</h2>
+     
+		<form th:object="${signupform}" th:action="@{/saveuser}" action="#" method="post">
+			<div>
+				<label> Username :<input type="text" th:field="*{username}" class="form-control"/></label>
+				<p th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Username Error</p>	
+			</div>
+			<div>
+				<label> Password :<input type="password" th:field="*{password}" class="form-control"/></label>
+				<p th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</p>	
+			</div>
+			<div>
+				<label> Re-type Password: <input type="password" th:field="*{passwordCheck}" class="form-control"/></label>
+				<p th:if="${#fields.hasErrors('passwordCheck')}" th:errors="*{passwordCheck}">Password Match Error</p>	
+			</div>
+			
+			<input type="submit" class="btn sm btn-info" value="Signup"></input><br>
+			<a class="btn btn-sm btn-light" style="margin-top:5px" th:href="@{/login}">back to login</a>		
+		</form>
+	
+</div>
+</body>
+</html>

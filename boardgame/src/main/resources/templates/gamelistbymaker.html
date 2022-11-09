@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Gamelist by maker</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />    
+</head>
+<body>
+
+	<table class="table table-striped">
+		<tr>
+		    <th>ID</th>
+		    <th>Nimi</th>
+		    <th>Hinta</th>
+		    <th>vuosi</th>
+		    <th>kuvaus</th>
+		    <th>määrä</th>
+
+		</tr>
+    	<th:block th:each = "make : ${make}">		
+    	 	<tr th:each="game : ${make.game}">
+    	 		<td th:text="${game.id}">id </td>
+				<td th:text="${game.name}">names </td>
+				<td th:text="${game.price}">price </td>		
+				<td th:text="${game.publishingYear}">pubyear</td>
+    			<td th:text="${game.description}">desc</td>
+    			<td th:text="${game.gamerAmount}">amount</td>
+			</tr>
+           
+
+    	</th:block>
+     </table>
+     <a class="btn btn-success" href="/makelist">Palaa takaisin</a>
+</body>
+</html>

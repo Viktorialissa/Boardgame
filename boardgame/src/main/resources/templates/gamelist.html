@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <title>Gamelist</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />    
+</head>
+<body>
+<div class="container">
+	<div class="col-ms-4">
+		<h1 style="text-align:center">Pelilista: ♟️🎲</h1>
+			<h3 th:inline="text" style="text-align:center; padding: 10px">Good day [[${#httpServletRequest.remoteUser}]]! 🌞</h3>
+	</div>
+<a class="btn btn-light" href="/index">Etusivu</a>
+
+	
+	<table class="table table-striped">
+		<tr>
+		    <th>ID</th>
+		    <th>Nimi</th>
+		    <th>Hinta</th>
+		    <th>Julkaisuvuosi</th>
+		    <th>kuvaus</th>
+		    <th>Pelaajamäärä</th>
+		    <th>Kategoria</th>
+		    <th>TYKKÄÄ</th>
+		    <th>Like</th>
+		    <th>Valmistaja</th>
+		    <th>Muokkaa</th>
+		    <th sec:authorize="hasAuthority('ADMIN')">Poista</th>
+		    
+		    
+		    
+		</tr>
+    	<tr th:each = "game : ${games}">
+    		<td th:text="${game.id}"></td>
+    		<td th:text="${game.name}"></td>
+    		<td th:text="${#numbers.formatDecimal(game.price,1,2)}"></td>
+    		<td th:text="${game.publishingYear}"></td>
+    		<td th:text="${game.description}"></td>
+    		<td th:text="${game.gamerAmount}"></td>
+    		<td th:text="${game.category.name}"></td>
+    		<td><a class="btn btn-success" th:href="@{/updatelik/{id}(id=${game.id})}">tks</a></td>
+    		
+    		<td th:text="${game.lik + 1}"></td>
+    		<td><input type="button" value="lik" class="btn btn-success" name="btn_lik" th:href="@{/updatelik/{id}(id=${game.id})}"/></td>
+    		
+    		<td th:text="${game.make.name}"></td>
+    		
+    		<td><a class="btn btn-success" th:href="@{/edit/{id}(id=${game.id})}">✍</a></td>
+    		<td sec:authorize="hasAuthority('ADMIN')"><a class="btn btn-danger" th:href="@{/delete/{id}(id=${game.id})}">☠️</a></td>
+    	</tr>
+     </table>
+     
+     
+     <a class="btn btn-sm btn-success" href="/add">➕ Lisää peli</a>
+     <a class="btn btn-sm btn-success" href="/makelist">Valmistajat 🏭</a>
+     <a class="btn btn-sm btn-success" href="/categorylist">Kategoriat 🎭</a>
+          
+          <div class="col-ms-4" style="float: right">
+		<form th:action="@{/logout}" method="post">
+			<input type="submit" value="Sign Out 🏃" class="btn btn-sm btn-warning"/>
+		</form>
+	</div>
+	</div>
+</body>
+</html>

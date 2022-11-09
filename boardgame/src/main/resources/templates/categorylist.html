@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <title>Categorylist</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />    
+</head>
+<body>
+<div class="container">
+	<div class="col-ms-4">
+	<h2 th:inline="text" style="text-align:center; padding: 10px; margin-top:10px">🎭 Kategoriat:</h2>
+	<a class="btn btn-light" href="/index">Etusivu</a>
+	<table class="table table-striped">
+		<tr>
+		    <th>ID</th>
+		    <th>Nimi</th>
+		    <th>Muokkaa</th>
+		    <th sec:authorize="hasAuthority('ADMIN')">Poista</th>
+		     
+		</tr>
+    	<tr th:each = "category : ${category}">
+    		<td th:text="${category.id}"></td>
+    		<td th:text="${category.name}"></td>
+    		<td><a class="btn btn-success" th:href="@{/editcategory/{id}(id=${category.id})}">✍</a></td>
+    		<td sec:authorize="hasAuthority('ADMIN')"><a class="btn btn-danger" th:href="@{/deletecategory/{id}(id=${category.id})}">☠️</a></td>
+    	</tr>
+     </table>
+     <a class="btn btn-sm btn-success" href="/addcategory">➕ Lisää kategoria</a>
+       <a class="btn btn-sm btn-light" href="/gamelist">Takaisin ⮌</a>
+       </div>
+       </div>
+</body>
+</html>

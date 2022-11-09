@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <title>Makelist</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />    
+</head>
+<body>
+<div class="container">
+	<div class="col-ms-4">
+	<h2 th:inline="text" style="text-align:center; padding: 10px; margin-top:10px">🏭 Valmistajat:</h2>
+	<a class="btn btn-light" href="/index">Etusivu</a>
+	<table class="table table-striped">
+		<tr>
+		    <th>ID</th>
+		    <th>Nimi</th>
+		    <th>Muokkaa</th>
+		    <th sec:authorize="hasAuthority('ADMIN')">Poista</th>
+		     
+		</tr>
+    	<tr th:each = "make : ${make}">
+    		<td th:text="${make.id}"></td>
+    		<td th:text="${make.name}"></td>
+    		<td><a class="btn btn-success" th:href="@{/editmake/{id}(id=${make.id})}">✍</a></td>
+    		<td><a class="btn btn-success" th:href="@{/gamelistbymaker/{id} (id=${make.id})}">Merkin pelit</a></td>
+    		<td sec:authorize="hasAuthority('ADMIN')"><a class="btn btn-danger" th:href="@{/deletemake/{id}(id=${make.id})}">☠️</a></td>
+    	</tr>
+     </table>
+     <a class="btn btn-sm btn-success" href="/addmake">➕ Lisää valmistaja</a>
+       <a class="btn btn-sm btn-light" href="/gamelist">Takaisin ⮌</a>
+       </div>
+       </div>
+</body>
+</html>

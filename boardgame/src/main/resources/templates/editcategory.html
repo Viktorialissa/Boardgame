@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>EditCategory</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+     <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+</head>
+<body>
+	<h2 th:inline="text" style="text-align:center; padding: 10px">🎭 Muokkaa kategoriaa</h2>
+	<div style="text-align:center">
+		<form th:object="${category}" th:action="@{../savecategory}" action="#" method="post">
+			<label for="id"></label>
+			<input type="hidden" id="id" th:field="*{id}" readonly="readonly" />
+		  	<label for="name">Nimi</label>
+			<input type="text" id="name" th:field="*{name}" />
+			<div class="alert alert-warning" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
+			<br>
+			<input type="submit" class="btn btn-sm btn-success"value="Tallenna ✓"></input>
+			<a class="btn btn-sm btn-light" href="/categorylist">Takaisin ⮌</a>
+		</form>
+	</div>
+</body>
+</html>

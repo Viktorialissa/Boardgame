@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>AddMake</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+</head>
+<body>
+	<h2 th:inline="text" style="text-align:center; padding: 10px">🏭 Lisää valmistaja</h2>
+	<div style="text-align:center">
+		<form th:object="${make}" th:action="@{savemake}" action="#" method="post">
+		  	<label for="name">Nimi</label>
+		  	 <div class="alert alert-warning" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
+			<input type="text" id="name" th:field="*{name}" th:required="required"/>
+			 
+			<div style="clear: both; display: block; height: 10px;"></div>
+			
+			<input class="btn btn-sm btn-success" type="submit" value="Tallenna ✓"></input>
+			<a class="btn btn-sm btn-light" href="/makelist">Takaisin ⮌</a>
+		</form>
+	</div>
+</body>
+</html>
