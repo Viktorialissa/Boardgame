@@ -14,16 +14,16 @@
 		<tr>
 		    <th>ID</th>
 		    <th>Nimi</th>
-		    <th>Muokkaa</th>
 		    <th>Kategorian pelit</th>
+		    <th>Muokkaa</th>
 		    <th sec:authorize="hasAuthority('ADMIN')">Poista</th>
 		     
 		</tr>
     	<tr th:each = "category : ${category}">
     		<td th:text="${category.id}"></td>
     		<td th:text="${category.name}"></td>
+    		<td><a class="btn btn-info" th:href="@{/gamelistbycat/{id}(id=${category.id})}">Kategorian pelit</a></td>
     		<td><a class="btn btn-success" th:href="@{/editcategory/{id}(id=${category.id})}">✍</a></td>
-    		<td><a class="btn btn-success" th:href="@{/gamelistbycat/{id}(id=${category.id})}">Kategorian pelit</a></td>
     		<td sec:authorize="hasAuthority('ADMIN')"><a class="btn btn-danger" th:href="@{/deletecategory/{id}(id=${category.id})}">☠️</a></td>
     	</tr>
      </table>

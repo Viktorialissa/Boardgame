@@ -26,8 +26,8 @@
 			<input type="text" id="publishingYear" th:field="*{publishingYear}"/>
 			<div class="alert alert-warning" th:if="${#fields.hasErrors('publishingYear')}" th:errors="*{publishingYear}"></div>
 			<div style="clear: both; display: block; height: 10px;"></div>
-			<label for="description">Kuvaus</label>
-			<input type="text" id="description" th:field="*{description}"/>
+			<label for="description" style="vertical-align: top">Kuvaus</label>
+			<textarea rows=3 cols=35 id="description" th:field="*{description}"></textarea>
 			<div style="clear: both; display: block; height: 10px;"></div>
 			<label for="gamerAmount">Pelaajamäärä</label>
 			<input type="text" id="gamerAmount" th:field="*{gamerAmount}"/>
