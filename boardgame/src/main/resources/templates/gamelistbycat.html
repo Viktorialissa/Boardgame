@@ -1,19 +1,19 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Gamelist by maker</title>
+    <title>Gamelist by category</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />    
 </head>
 <body>
 <div class="container">
 	<div class="col-ms-4">
-	<h2 th:inline="text" style="text-align:center; padding: 10px; margin-top:10px">🏭 Valmistajan pelit:</h2>
+	<h2 th:inline="text" style="text-align:center; padding: 10px; margin-top:10px">🎭 Kategorian pelit:</h2>
 
 	<table class="table table-striped">
 		<tr>
 		    <th>ID</th>
-		    <th>Valmistajan nimi</th>
+		    <th>Kategorian nimi</th>
 		    <th>Pelin nimi</th>
 		    <th>Hinta</th>
 		    <th>Julkaisuvuosi</th>
@@ -22,10 +22,10 @@
 		    <th>Tykkäykset</th>
 
 		</tr>
-    	<th:block th:each = "make : ${make}">		
-    	 	<tr th:each="game : ${make.game}">
+    	<th:block th:each = "category : ${category}">		
+    	 	<tr th:each="game : ${category.game}">
     	 		<td th:text="${game.id}">id </td>
-				<td th:text="${game.make.name}">names </td>
+    	 		<td th:text="${game.category.name}">names </td>
 				<td th:text="${game.name}">names </td>
 				<td th:text="${game.price}">price </td>		
 				<td th:text="${game.publishingYear}">pubyear</td>
@@ -37,8 +37,8 @@
 
     	</th:block>
      </table>
-     <a class="btn btn-success" href="/makelist">Palaa takaisin</a>
+     <a class="btn btn-success" href="/categorylist">Palaa takaisin</a>
      </div>
-     </div> 
+     </div>
 </body>
 </html>

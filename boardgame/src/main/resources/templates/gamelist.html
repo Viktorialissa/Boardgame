@@ -40,13 +40,9 @@
     		<td th:text="${game.description}"></td>
     		<td th:text="${game.gamerAmount}"></td>
     		<td th:text="${game.category.name}"></td>
-    		<td><a class="btn btn-success" th:href="@{/editgamelik/{id}(id=${game.id})}">tks</a></td>
-    		
-    		<td th:text="${game.lik + 1}"></td>
-    		<td><input type="button" value="lik" class="btn btn-success" name="btn_lik" th:href="@{/updatelik/{id}(id=${game.id})}"/></td>
-    		
+    		<td><a class="btn btn-info" th:href="@{/addlikbyone/{id}(id=${game.id})}">👍</a></td>
+    		<td th:text="${game.lik}"></td>
     		<td th:text="${game.make.name}"></td>
-    		
     		<td><a class="btn btn-success" th:href="@{/edit/{id}(id=${game.id})}">✍</a></td>
     		<td sec:authorize="hasAuthority('ADMIN')"><a class="btn btn-danger" th:href="@{/delete/{id}(id=${game.id})}">☠️</a></td>
     	</tr>
@@ -59,7 +55,7 @@
           
           <div class="col-ms-4" style="float: right">
 		<form th:action="@{/logout}" method="post">
-			<input type="submit" value="Sign Out 🏃" class="btn btn-sm btn-warning"/>
+			<input type="submit" value="Sign Out 🏃" class="btn btn-sm btn-outline-dark"/>
 		</form>
 	</div>
 	</div>

@@ -10,6 +10,7 @@ public interface CategoryRepository extends CrudRepository<Category, Long> {
 	
 	@RestResource
 	List<Category> findByName(@Param("name") String name);
+	List<Category> findByCategoryId(Long categoryId);
 
 
 }

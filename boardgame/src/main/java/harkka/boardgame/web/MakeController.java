@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -99,6 +100,12 @@ public class MakeController {
     	return mrepository.save(make);
     }
     
+
+    // RESTful service to delete maker
+    @DeleteMapping("/makes/{id}")
+    void deleteMake(@PathVariable Long id) {
+    	mrepository.deleteById(id);
+    }
 
 }
 
