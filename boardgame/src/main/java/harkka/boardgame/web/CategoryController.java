@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -90,5 +91,10 @@ public class CategoryController {
     	return crepository.save(category);
     }
     
+    // RESTful service to delete category
+    @DeleteMapping("/categories/{id}")
+    void deleteCategory(@PathVariable Long id) {
+    	crepository.deleteById(id);
+    }
 
 }

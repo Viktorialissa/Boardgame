@@ -24,7 +24,7 @@ public class WebSecurityConfig {
 	    public SecurityFilterChain configure(HttpSecurity http) throws Exception {
 	        http
 	        .authorizeRequests()
-	        	.antMatchers("/css/**", "/pics/**", "/error", "/index").permitAll()
+	        	.antMatchers("/css/**", "/pics/**", "/error", "/index", "/api/**", "/games/**", "/categories/**", "/makes/**").permitAll()
 	        	.antMatchers("/signup", "/saveuser", "/h2-console/**").permitAll()
 	        	.anyRequest().authenticated()
 	        	.and()

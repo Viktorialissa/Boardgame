@@ -42,9 +42,9 @@ public class Game {
 	private Date created = new Date();
 	
 
-	//{"hibernateLazyInitializer"}
+	//{"hibernateLazyInitializer"} OneToOne olisi laitettu jsonignoreproperties lazyyn.
 	
-	@JsonIgnoreProperties ("games")
+	//@JsonIgnoreProperties ("hibernateLazyInitializer") likentity
 	@ManyToOne
     @JoinColumn(name = "makeId")
     private Make make;
@@ -190,11 +190,9 @@ public class Game {
 	// toString
 	@Override //dokumentoiva annotaatio (ei vaikuta järjestelmään mitenkään vrt springin annotaatiot joilla väliä)
 	public String toString() {
-		if (this.make != null)
-				return "Game [id=" + gameId + ", name= " + name + ", brand= " + brand + ", price= " + price + ", year= " + publishingYear  + ", description= " + description + ", player amount= " + gamerAmount + ", like=" + lik + ", kategoria= " + this.getCategory() + ", valmistaja=" + this.getMake() + " ]";
-		else
-			return "Game [id=" + gameId + ", name= " + name + ", brand= " + brand + ", price= " + price + ", year= " + publishingYear  + " description= " + description + " player amount= " + gamerAmount + ", valmistaja" + " ]";
-	}
+		return "Game [id=" + gameId + ", name=" + name + ", brand=" + brand + ", price=" + price +  ", year= " + publishingYear  + ", description= " + description + ", player amount= " + gamerAmount + ", like=" + lik + ", kategoria= " + category + ", valmistaja=" + make + " ]";
+
+}
 
 			
 

@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotEmpty;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
@@ -24,7 +25,8 @@ public class Category {
 	@NotEmpty
 	private String name;
 	
-	@JsonIgnoreProperties ("categories")
+	//@JsonIgnoreProperties ("categories") aiheutuu looppi tällä, kun kaikilla controllereilla on resti.
+	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "category")
 	private List<Game> game;
 	
