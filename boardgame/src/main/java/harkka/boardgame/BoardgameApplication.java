@@ -63,10 +63,12 @@ public class BoardgameApplication {
 			Game g1 = new Game("NIMI", "BRANDI", 2021 , 1.00, "KUVAUS", "1", 0, c1, mrepository.findByName("Valmistaja1").get(0) );
 			Game g2 = new Game("NIMI2", "BRANDI", 2022 , 2.00, "KUVAUS2", "1-2", 3, c2, m2 );
 			Game g3 = new Game("NIMI3", "BRANDI", 2023 , 3.00, "KUVAUS3", "2-3", 13, c3, m3 );
+			Game g4 = new Game("NIMI4", "BRANDI", 1900 , 15.00, "Hauska peli", "2-10", 600, c3, m3 );
 			
 			repository.save(g1);
 			repository.save(g2);
 			repository.save(g3);
+			repository.save(g4);
 			
 			
 			

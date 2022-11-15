@@ -29,13 +29,10 @@
 			<div class="alert alert-warning" th:if="${#fields.hasErrors('publishingYear')}" th:errors="*{publishingYear}"></div>
 			<div style="clear: both; display: block; height: 10px;"></div>
 			<label for="description" style="vertical-align: top">Kuvaus</label>
-			<textarea rows=3 cols=35 id="description" th:field="*{description}"></textarea>
+			<textarea rows=3 cols=35 id="description" th:field="*{description}"></textarea> 
 			<div style="clear: both; display: block; height: 10px;"></div>
 			<label for="gamerAmount">Pelaajamäärä</label>
 			<input type="text" id="gamerAmount" th:field="*{gamerAmount}" />
-			<div style="clear: both; display: block; height: 10px;"></div>
-			<label for="lik">lik</label>
-			<input type="number" id="lik" th:field="*{lik}"/>
 			<div style="clear: both; display: block; height: 10px;"></div>
 			<label for="categorylist">Kategoria</label>
 				<select id="categorylist" th:field="*{category}">

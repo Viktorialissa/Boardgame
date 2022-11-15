@@ -7,12 +7,12 @@
 </head>
 <body>
 <div class="container">
-	<div class="col-ms-4">
+
+	
 		<h1 style="text-align:center">Pelilista: ♟️🎲</h1>
 			<h3 th:inline="text" style="text-align:center; padding: 10px">Good day [[${#httpServletRequest.remoteUser}]]! 🌞</h3>
 	</div>
 <a class="btn btn-light" href="/index">Etusivu</a>
-
 	
 	<table class="table table-striped" style="text-align: center">
 		<tr>
@@ -25,6 +25,7 @@
 		    <th>Kategoria</th>
 		    <th>Tykkää</th>
 		    <th>Tykkäykset</th>
+		    <th>Lisäys pvm</th>
 		    <th>Valmistaja</th>
 		    <th>Muokkaa</th>
 		    <th sec:authorize="hasAuthority('ADMIN')">Poista</th>
@@ -42,6 +43,7 @@
     		<td th:text="${game.category.name}"></td>
     		<td><a class="btn btn-info" th:href="@{/addlikbyone/{id}(id=${game.id})}">👍</a></td>
     		<td th:text="${game.lik}"></td>
+    		<td th:text="${#dates.format(game.created, 'dd.MM.yyy' )}"></td>
     		<td th:text="${game.make.name}"></td>
     		<td><a class="btn btn-success" th:href="@{/edit/{id}(id=${game.id})}">✍</a></td>
     		<td sec:authorize="hasAuthority('ADMIN')"><a class="btn btn-danger" th:href="@{/delete/{id}(id=${game.id})}">☠️</a></td>
@@ -57,7 +59,8 @@
 		<form th:action="@{/logout}" method="post">
 			<input type="submit" value="Sign Out 🏃" class="btn btn-sm btn-outline-dark"/>
 		</form>
+		
 	</div>
-	</div>
+	
 </body>
 </html>

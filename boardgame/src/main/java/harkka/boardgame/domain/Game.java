@@ -2,6 +2,8 @@ package harkka.boardgame.domain;
 
 
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,6 +15,8 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
@@ -22,6 +26,7 @@ public class Game {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long gameId;
+	
 	
 	//attribuutit
 	@NotEmpty(message = "Name is mandatory")
@@ -34,6 +39,7 @@ public class Game {
 	private String description;
 	private String gamerAmount;
 	private int lik;
+	private Date created = new Date();
 	
 
 	//{"hibernateLazyInitializer"}
@@ -64,6 +70,7 @@ public class Game {
 		this.category = null;
 		
 		
+		
 	}
 	
 	//parametrillinen konstruktori
@@ -90,6 +97,15 @@ public class Game {
 	public Long getId() {
 		return gameId;
 	}	
+
+	
+	public Date getCreated() {
+		return created;
+	}
+
+	public void setCreated(Date created) {
+		this.created = created;
+	}
 
 	public String getBrand() {
 		return brand;
